@@ -25,7 +25,7 @@ const corsOptions = {
     origin: process.env.ALLOWED_CLIENTS.split(',')
 }
 
-app.use(corsOptions);
+app.use(cors(corsOptions));
 
 
 /*C:\Users\PUNIT KUMAR OJHA\Desktop\web_dev\JS\fileshare\server.js*/
