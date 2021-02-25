@@ -1,14 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const post__ = require('./Routes/files');
 const path = require('path');
 const get__ = require('./Routes/get');
 const down__ = require('./Routes/download');
 const cors = require('cors');
-require('dotenv').config();
-
 
 // express connection
 const app = express();
+app.use(cors());
 
 // DB Connection
 const connectDB = require('./configs/db');
@@ -20,16 +20,6 @@ app.use(express.static('public'));
 connectDB();
 
 // cors
-
-const corsOptions = {
-    origin: process.env.ALLOWED_CLIENTS.split(',')
-}
-
-app.use(cors(corsOptions));
-
-
-/*C:\Users\PUNIT KUMAR OJHA\Desktop\web_dev\JS\fileshare\server.js*/
-
 //Set Template Engine
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');

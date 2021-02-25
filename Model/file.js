@@ -21,16 +21,6 @@ const dbSchema = new schema({
         type: String,
         required: true
     },
-    
-    sender:{
-        type: String,
-        required: false
-    },
-
-    reciever:{
-        type: String, 
-        required: false
-    }
 
 }, {timestamps: true});
 
