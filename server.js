@@ -9,7 +9,12 @@ const connectDB = require('./configs/db');
 
 // express connection
 const app = express();
-app.use(cors());
+
+corsOptions = {
+    origin: ["http://localhost:3000" , "http://localhost:5000" , "http://localhost:3300"]
+}
+
+app.use(cors(corsOptions));
 
 // port no 
 const PORT = process.env.PORT || 3000;

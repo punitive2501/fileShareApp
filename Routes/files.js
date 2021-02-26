@@ -58,10 +58,12 @@ router.post('/', (req, res)=>{
                 message: "uploaded",
                 file: `${process.env.APP_BASE_URL}/files/${response.uuid}`
             });
+
         }catch(err){
+            console.log(err);
             return res.json({
                 status: 400,
-                error: "Something went wrong"
+                error: "Something went wrong\n"
             })
         }
     });
