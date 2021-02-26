@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const util = require('util');
 const multer = require('multer');
 const document = require('./../Model/file');
 const path = require('path');
@@ -29,14 +28,14 @@ router.post('/', (req, res)=>{
     
     upload(req, res, async (err)=>{
         // if file is not there so error
-        try{
-            
-            if(err){
-                return res.status(500).send({
-                    error: err.message
-                })
-            }
+        if(err){
+            return res.status(500).send({
+                error: err.message,
+                msg: "msg"
+            })
+        }
 
+        try{    
             if(!req.file){
                 return res.json({
                     error: "No file uploaded"
@@ -46,7 +45,6 @@ router.post('/', (req, res)=>{
             /* Storing the data into DB */
             const new_doc = document({
                 fileName: req.file.filename,
-                createdAt: Date.now,
                 path:req.file.path,
                 size:req.file.size,
                 uuid: uuid4()
@@ -63,7 +61,8 @@ router.post('/', (req, res)=>{
             console.log(err);
             return res.json({
                 status: 400,
-                error: "Something went wrong\n"
+                message: err.message,
+                error: "Something went wrong"
             })
         }
     });
