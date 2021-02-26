@@ -1,4 +1,5 @@
 :root{
+    --width: 500px;
     --main-bg-color: skyblue;
     --border-color: rgba(0, 0, 0, 0.95);  
 }
@@ -9,6 +10,8 @@ body, html{
      height: 100%;
      padding: 0;
      margin: 0;
+     overflow: hidden;
+     
 }
 
 .upload-container{
@@ -41,7 +44,7 @@ body, .drop-zone, .upload-container{
 
 .drop-zone{
     margin: 30px;
-    width: 500px;
+    width: var(--width);
     border-radius: 20px;
     min-height: 200px;
     border: 2px dashed;
@@ -69,11 +72,39 @@ body, .drop-zone, .upload-container{
 }
 
 .progress-container{
-    width: 500px;
+    width: var(--width);
     height: 20px;
-    border: 2px solid;
+    border: 2px solid black;
     margin-bottom: 20px;
     border-radius: 10px;
+    position: relative;
+    display: none;
+}
+
+.copy{
+    margin-bottom: 40px;
+    margin-left: 200px;
+}
+
+.expires{
+    opacity: 0.8;
+    text-align: center;
+}
+
+.link_container{
+    width: var(--width);
+    display: none;
+}
+
+.link_container .link_box input{
+    width: var(--width);
+    border: 2px dashed black;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-size: 20px;
+    background: rgb(207, 241, 255);
 }
 
 .progress-container .bg-progress{
@@ -81,6 +112,32 @@ body, .drop-zone, .upload-container{
     width: 0%;
     height: 100%;
     border-radius: 2%;
-    transform-origin: left;
     transition: width .25s linear;
+    transform-origin: left;
+    position: absolute;
+    z-index: 999;
+}
+
+
+.alert{
+    position: absolute;
+    bottom: 40px;
+    font-size: 20px;
+    left: 50%;
+    transform: translate(-50%, 100px);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    transition: transform ease-in-out 0.3s;
+    background:rgb(67, 67, 231);
+}
+
+
+
+
+@media screen and (max-width: 900px){
+    :root{
+        --width: 320px;
+        
+    }
 }

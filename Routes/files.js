@@ -30,15 +30,13 @@ router.post('/', (req, res)=>{
         // if file is not there so error
         if(err){
             return res.status(500).send({
-                error: err.message,
-                msg: "msg"
+                error: err.message
             })
         }
-
         try{    
-            if(!req.file){
+            if(!req.file || req.file.size > max_size){
                 return res.json({
-                    error: "No file uploaded"
+                    error: "No file uploaded(File size exceeds 3MB)"
                 });
             }
 

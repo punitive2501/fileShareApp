@@ -21,12 +21,10 @@ const dbSchema = new schema({
         type: String,
         required: true
     },
-
     createdAt:{
         type: Date,
-        expires: 10,
+        expires: 60,
         default: Date.now
     }
 });
-
 module.exports = mongoose.model('Files', dbSchema);
