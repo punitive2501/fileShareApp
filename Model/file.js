@@ -23,7 +23,7 @@ const dbSchema = new schema({
     },
     createdAt:{
         type: Date,
-        expires: 7200,
+        expires: 70,
         default: Date.now
     }
 });
