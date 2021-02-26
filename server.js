@@ -33,7 +33,7 @@ app.use('/files', get__);
 
 app.use('/files/download', down__);
 
-cron.schedule('* * * * *', async function() {
+cron.schedule('* 3 * * *', async function() {
     connectDB();
     // Get all records older than 24 hours 
     const files = await File.find({ createdAt : { $lt: new Date(Date.now() - 1)} });
