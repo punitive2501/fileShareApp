@@ -20,7 +20,13 @@ const dbSchema = new schema({
     uuid:{
         type: String,
         required: true
+    },
+
+    createdAt:{
+        type: Date,
+        expires: 10,
+        default: Date.now
     }
-},{timestamps: true});
+});
 
 module.exports = mongoose.model('Files', dbSchema);
