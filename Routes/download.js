@@ -2,9 +2,9 @@ const router = require('express').Router();
 const File = require('./../Model/file');
 
 router.get('/:uuid', async(req, res)=>{    
+
     try{
         // fetch file
-
         const file_srch = await File.findOne({
             uuid: req.params.uuid  
         });

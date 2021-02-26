@@ -23,8 +23,9 @@ const dbSchema = new schema({
     },
     createdAt:{
         type: Date,
-        expires: 60,
+        expires: 7200,
         default: Date.now
     }
 });
+// expires in 2 hrs
 module.exports = mongoose.model('Files', dbSchema);

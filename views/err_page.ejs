@@ -16,10 +16,10 @@
         <h3><%= locals.error %> </h3>
         <% } else { %>
         <h2>Your file is ready to download</h2>
-        <p>Link expires in 24 hours</p>
+        <p>Link expires in 2 hours</p>
         <div class="download__meta">
             <h4><%= fileName %></h4>
-            <small><%= parseInt(fileSize/1000) %> KB</small>
+            <small><%= parseInt(fileSize/1024) %> KB</small>
         </div>
         <div class="send-btn-container">
             <a href="<%= downloadLink %>">Download file</a>
