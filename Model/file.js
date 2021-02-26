@@ -6,6 +6,12 @@ const dbSchema = new schema({
         type: String,
         required: true
     },
+    
+    val:{
+        type: Number,
+        default: 10,
+        required: true
+    },
 
     path:{
         type: String,
@@ -22,6 +28,5 @@ const dbSchema = new schema({
         required: true
     },
 
-}, {timestamps: true});
-
+},{timestamps: true});
 module.exports = mongoose.model('Files', dbSchema);

@@ -16,7 +16,7 @@ body, html{
     background: white;
 }
 
-body, .drop-zone{
+body, .drop-zone, .upload-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,4 +66,21 @@ body, .drop-zone{
 .browse{
     color: gray;
     cursor: pointer;
+}
+
+.progress-container{
+    width: 500px;
+    height: 20px;
+    border: 2px solid;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.progress-container .bg-progress{
+    background: rgb(214, 243, 255);
+    width: 0%;
+    height: 100%;
+    border-radius: 2%;
+    transform-origin: left;
+    transition: width .25s linear;
 }

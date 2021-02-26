@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const File = require('./../Model/file');
-
 /* take us to download/error page */
+
 router.get('/:uuid', async (req, res)=>{
     try{
         // fetch file
         const file_srch = await File.findOne({
             uuid: req.params.uuid  
         });
-
+    
         if(!file_srch){
             return res.render('err_page', 
             {error: "Wrong/Expired Link"});
@@ -27,7 +27,6 @@ router.get('/:uuid', async (req, res)=>{
         return res.render('err_page', 
             {error: "something went wrong"});
     }
-
 });
 
 

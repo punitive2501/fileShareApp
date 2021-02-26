@@ -1,8 +1,9 @@
 const dropzone = document.querySelector(".drop-zone");
 const fileip = document.querySelector(".fileip");
 const browse = document.querySelector(".browse");
+const bgProgress = document.querySelector(".bg-progress");
 
-const host = "https://innshare.herokuapp.com/"
+const host = "https://file-shareapp.herokuapp.com/";
 const uploadURL = host + "api/files";
 
 
@@ -35,22 +36,35 @@ browse.addEventListener("click", ()=>{
     fileip.click();
 });
 
+fileip.addEventListener("change", ()=>{
+    uploadFile();
+});
 
 /* Monitoring Upload */ 
 
 const uploadFile = ()=>{
     const File = fileip.files[0];
     const formData = new FormData();
-    formData.append(File);
+    formData.append("file", File);
 
     const xhr = new XMLHttpRequest();
 
-    /* successfull upload */
+    /* successfull upload*/
     xhr.onreadystatechange = ()=>{
         console.log(xhr.readyState);
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            /* JSON Object contains link */
+            console.log(xhr.response);
+        }
     }
-
+    xhr.upload.onprogress = updateProgress;
     xhr.open("POST", uploadURL);
     xhr.send(formData);
+    
 }
 
+const updateProgress = (e)=>{
+    const percent = Math.round(e.loaded/e.total)*100;
+    console.log(percent);
+    bgProgress.style.width = `${percent}%`;
+}

@@ -26,9 +26,11 @@ let upload = multer({
 
 router.post('/', (req, res)=>{
     // Validate req
+    
     upload(req, res, async (err)=>{
         // if file is not there so error
         try{
+            
             if(err){
                 return res.status(500).send({
                     error: err.message
@@ -42,17 +44,16 @@ router.post('/', (req, res)=>{
             }
 
             /* Storing the data into DB */
-
             const new_doc = document({
                 fileName: req.file.filename,
+                createdAt: Date.now,
                 path:req.file.path,
                 size:req.file.size,
                 uuid: uuid4()
             });
 
-
             const response = await new_doc.save();
-
+            
             return res.json({
                 message: "uploaded",
                 file: `${process.env.APP_BASE_URL}/files/${response.uuid}`
